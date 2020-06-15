@@ -1,3 +1,5 @@
+"""Module 2 tasks."""
+
 from collections import defaultdict
 
 ITEMS_TO_SKIP = ['chewed gum', 'rubbish', 'used tissue']
@@ -7,11 +9,9 @@ LIGHT_WEIGHT_THRESHOLD = 60
 
 
 def display_inventory(inventory):
-    '''
-    Displays the contents of the inventory
-    '''
-    print("Inventory:")
+    """Display the contents of the inventory."""
     item_total = 0
+    print("Inventory:")
     for item_name, item_count in inventory.items():
         print(item_count, item_name)
         item_total += item_count
@@ -25,10 +25,11 @@ def display_inventory(inventory):
 
 
 def add_to_inventory(inventory, added_items, items_to_skip):
-    '''
-    Ads useful items to the inventory and skips not useful.
+    """
+    Ad useful items to the inventory and skip not useful.
+
     Returns a new inventory with added items.
-    '''
+    """
     skipped = defaultdict(int)
     added_count = 0
     for item_name in added_items:
@@ -47,9 +48,9 @@ def add_to_inventory(inventory, added_items, items_to_skip):
 
 
 inv = {'gold coin': 42, 'rope': 1}
-inv_defdict = defaultdict(int, inv)
+inv2 = defaultdict(int, inv)
 dragon_loot = [
     'gold coin', 'chewed gum', 'dagger', 'gold coin', 'gold coin', 'ruby',
     'rubbish', 'chewed gum', 'used tissue', 'rope', 'rope']
-inv = add_to_inventory(inv_defdict, dragon_loot, ITEMS_TO_SKIP)
+inv = add_to_inventory(inv2, dragon_loot, ITEMS_TO_SKIP)
 display_inventory(inv)
