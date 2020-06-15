@@ -24,15 +24,15 @@ def display_inventory(inventory):
         print("CAUTION: Your backpack weighs a lot, your stamina runs out quicker!")
 
 
-def add_to_inventory(inventory, added_items, items_to_skip):
+def add_to_inventory(inventory, items, items_to_skip):
     """
-    Ad useful items to the inventory and skip not useful.
+    Add items to the inventory and skip items marked explicitly as to be skipped.
 
     Returns a new inventory with added items.
     """
     skipped = defaultdict(int)
     added_count = 0
-    for item_name in added_items:
+    for item_name in items:
         if item_name in items_to_skip:
             skipped[item_name] += 1
         else:
@@ -48,9 +48,9 @@ def add_to_inventory(inventory, added_items, items_to_skip):
 
 
 inv = {'gold coin': 42, 'rope': 1}
-inv2 = defaultdict(int, inv)
+inv = defaultdict(int, inv)
 dragon_loot = [
     'gold coin', 'chewed gum', 'dagger', 'gold coin', 'gold coin', 'ruby',
     'rubbish', 'chewed gum', 'used tissue', 'rope', 'rope']
-inv = add_to_inventory(inv2, dragon_loot, ITEMS_TO_SKIP)
+inv = add_to_inventory(inv, dragon_loot, ITEMS_TO_SKIP)
 display_inventory(inv)
